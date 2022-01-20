@@ -19,6 +19,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "ts-node": "^10.4.0",
     "vue": "^3.2.27",
     "zxcvbn": "^4.4.2"
   },

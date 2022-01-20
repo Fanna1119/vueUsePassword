@@ -1,19 +1,28 @@
-<script setup>
+<script setup lang="ts">
 import { ref } from "@vue/reactivity";
-import usePasswordStrength from "./composables/usePasswordStrength.ts";
+import usePasswordStrength from "./composables/usePasswordStrength";
+import usePasswordGenerator from "./composables/usePasswordGenerator";
 
-const password = ref("password");
+const { password, generate } = usePasswordGenerator({
+  length: 50,
+  uppercase: true,
+  lowercase: true,
+  numbers: true,
+  symbols: true,
 
-const { passwordRef, score, feedback } = usePasswordStrength(password);
+})
+
+// const password = ref<String>("password");
+
+const { result } = usePasswordStrength(password);
 </script>
 
 <template>
-<div>
-  <input type="text" v-model="password">
-  <p>{{ feedback }}</p>
-  <p>{{score}}</p>
-  {{passwordRef}}
-</div>
+  <div>
+    <input type="text" v-model="pw" />
+<button @click="generate">generate</button>
+{{result}}
+  </div>
 </template>
 
 <style>
