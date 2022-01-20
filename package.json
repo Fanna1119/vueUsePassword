@@ -1,0 +1,28 @@
+{
+  "name": "vitenpmstarter",
+  "version": "0.0.0",
+  "description": "your description",
+  "files": [
+    "dist"
+  ],
+  "main": "dist/{name}.umd.js",
+  "module": "dist/{name}.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/{name}.es.js",
+      "require": "./dist/{name}.umd.js"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.2.27"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.0.1",
+    "vite": "^2.7.12"
+  }
+}
