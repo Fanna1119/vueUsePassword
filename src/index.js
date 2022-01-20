@@ -1,7 +1,5 @@
-import HelloWorld from './components/HelloWorld.vue';
-import dummy from './components/dummy.vue';
-import hello from './composables/helloworld.js'
+import usePasswordStrength from "./composables/usePasswordStrength"
 
 export {
-    HelloWorld, hello, dummy
+    usePasswordStrength
 }

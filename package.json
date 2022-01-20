@@ -19,7 +19,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.2.27"
+    "vue": "^3.2.27",
+    "zxcvbn": "^4.4.2"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.0.1",

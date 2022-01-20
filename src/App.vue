@@ -1,12 +1,19 @@
 <script setup>
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
-import HelloWorld from './components/HelloWorld.vue'
+import { ref } from "@vue/reactivity";
+import usePasswordStrength from "./composables/usePasswordStrength.ts";
+
+const password = ref("password");
+
+const { passwordRef, score, feedback } = usePasswordStrength(password);
 </script>
 
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + Vite" />
+<div>
+  <input type="text" v-model="password">
+  <p>{{ feedback }}</p>
+  <p>{{score}}</p>
+  {{passwordRef}}
+</div>
 </template>
 
 <style>
