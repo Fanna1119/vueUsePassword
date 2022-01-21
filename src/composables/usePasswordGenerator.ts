@@ -1,8 +1,9 @@
-import { ref, computed, watch } from 'vue'
+import { ref, readonly } from 'vue'
+import { lowerCaseLetters, upperCaseLetters, numberslist, specialCharacters } from './textCharacters'
 
 export interface PasswordOptions {
     /**
-     * set the length of the password
+     * Set the length of the password
      *
      * @default 8
      */
@@ -39,7 +40,7 @@ export interface PasswordOptions {
 }
 
 //function to generate a strong password
-export default function generateStrongPassword(options: PasswordOptions = {}) {
+export default function usePasswordGenerator(options: PasswordOptions = {}) {
     const {
         length = 8,
         uppercase = true,
@@ -48,16 +49,12 @@ export default function generateStrongPassword(options: PasswordOptions = {}) {
         special = true
     } = options
 
-    const upperCaseLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-    const lowerCaseLetters = 'abcdefghijklmnopqrstuvwxyz'
-    const numberslist = '0123456789'
-    const specialCharacters = '!@#$%^&*()'
-
     const password = ref<String>('')
 
     function generate() {
         password.value = '';
         const characters = []
+
         if (uppercase) {
             characters.push(...upperCaseLetters)
         }
@@ -78,7 +75,7 @@ export default function generateStrongPassword(options: PasswordOptions = {}) {
     }
 
     return {
-        password,
+        password: readonly(password),
         generate
     }
 }
